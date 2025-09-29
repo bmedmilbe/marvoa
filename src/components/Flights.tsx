@@ -38,7 +38,7 @@ const Flights = ({ flight, chepeast }: Props) => {
         </span>
         <span>
           {flight.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-          &nbsp;{flight.city.id == 1 ? `dbs` : `€`}
+          &nbsp;{flight.city.id == 1 ? `dbs` : `dbs`}
         </span>
         <a
           target="_blank"
@@ -52,7 +52,7 @@ const Flights = ({ flight, chepeast }: Props) => {
             } que está por volta de ${flight.final_price
               .toString()
               .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} ${
-              flight.city.id == 1 ? "dbs" : " €"
+              flight.city.id == 1 ? " dbs" : " dbs"
             }. `
           )}
           className="btn rounded bg-bs-color"
