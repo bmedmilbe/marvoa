@@ -8,7 +8,7 @@ export interface Cheapest {
 const FlightsPage = () => {
   const { data: flights } = useFlights(1);
 
-  const airlines = [{ name: "TAP" }, { name: "TAAG" }];
+  const airlines = [{ name: "TAAG" }, { name: "TAP" }];
 
   const getChepeast = (flight: Flight) => {
     const localFlights = flights?.results.filter(
