@@ -82,7 +82,7 @@ const FlightsPage = () => {
                 <span className="c-bs-color fs-3">
                   {flights?.results[0].city.name}
                 </span>{" "}
-                para de{" "}
+                para{" "}
                 <span className="c-bs-color fs-3">
                   {flights?.results[0].city_to.name}
                 </span>
