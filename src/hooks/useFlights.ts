@@ -26,14 +26,21 @@ export interface QueryParams {
   ordering?: string;
   page?: number;
 }
+// useFlights.ts
+
+// ... (imports e interfaces)
 
 const useFlights = (newId: number) => {
   const query_params = useQueryStory((c) => c.query);
   const apiClient = new ApiClient<Flight>("fly/flights");
-  // console.log()
+
+  // INÍCIO DA MUDANÇA
+  // ----------------------------------------------------
+  // Inclua newId e query_params (ou as partes relevantes) no queryKey.
+  // Isso garante que a query seja refeita (e use a nova query_params) quando o estado mudar.
   return useQuery<ResponseA<Flight>>({
     queryFn: ({ pageParam = 0 }) => {
-      console.log(query_params.to);
+      console.log("Chamada à API. query_params.to é:", query_params.to); // Vai mostrar o valor atualizado!
       return apiClient.getAllSecond({
         params: query_params.to
           ? {
@@ -47,22 +54,20 @@ const useFlights = (newId: number) => {
               ...query_params,
               city_to__country: "",
               city__country: newId,
-
               limit: 10,
               offset: pageParam * 10,
             },
       });
     },
-    queryKey: ["flights"],
+    // queryKey: ["flights"], // ANTES
+    queryKey: ["flights", newId, query_params], // DEPOIS
+    // ----------------------------------------------------
+    // FIM DA MUDANÇA
+
     getNextPageParam: (lastPage, allPage) => {
-      // return 3;
-      // console.log(allPage.length % 10);
-      //check if no next page in last page
-      // console.log(lastPage);
-      // return 1;
       let count = 0;
       allPage.map((p) => (count = count + p.results.length));
-      return count != lastPage.count ? allPage.length : undefined;
+      return count !== lastPage.count ? allPage.length : undefined;
     },
   });
 };

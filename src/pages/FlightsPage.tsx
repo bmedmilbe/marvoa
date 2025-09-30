@@ -29,8 +29,7 @@ const FlightsPage = () => {
   return (
     <div className="container">
       <div className="text-center">
-        {/*
-        <p
+        {/* <p
           className="bg-bs-color d-inline p-2 rounded"
           onClick={() => setFromSTP(!fromSTP)}
           style={{ cursor: "pointer" }}
@@ -39,7 +38,7 @@ const FlightsPage = () => {
           para <img src="/world-flag.png" width="30" height="30" /> (São Tomé)
         </p>{" "}
         <hr />
-        */}
+       */}
         {fromSTP && (
           <div className={`d-flex justify-content-center align-items-center`}>
             <img src="/world-flag.png" width="50" height="50" />

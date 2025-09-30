@@ -11,7 +11,7 @@ const Flights = ({ flight, chepeast }: Props) => {
     const encodedMessage: string = encodeURIComponent(message);
 
     // 2. Cria o link final usando o formato wa.me
-    const waLink: string = `https://wa.me/447424095648?text=${encodedMessage}`;
+    const waLink: string = `https://wa.me/2399814375?text=${encodedMessage}`;
 
     return waLink;
   }
